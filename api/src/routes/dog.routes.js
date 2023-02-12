@@ -1,9 +1,16 @@
-const { Router } = require('express')
+const { Router } = require("express");
+const {
+  getDogs,
+  getDogId,
+  createDog,
+} = require("../controllers/Dogs.controllers");
 
-const router = Router()
+const router = Router();
 
-router.get('/', (req, res) => {
-    res.send('Funciona la ruta de dogs')
-});
+router.get("/", getDogs);
+
+router.get("/:id", getDogId);
+
+router.post("/", createDog);
 
 module.exports = router;
