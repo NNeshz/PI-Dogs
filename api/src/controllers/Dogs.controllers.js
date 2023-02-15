@@ -1,3 +1,4 @@
+const { Dog, Temperament} = require("../db");
 const { getAllDogs } = require("../utils/utils");
 
 const getDogs = async (req, res) => {
@@ -29,7 +30,7 @@ const getDogId = async (req, res) => {
       res.status(202).send(dogs);
     } else {
       let dogs = await getAllDogs();
-      let dogId = dogs.filter((p) => p.id == id);
+      let dogId = dogs.find((p) => p.id == id);
 
       dogId
         ? res.status(202).send(dogId)
@@ -40,7 +41,30 @@ const getDogId = async (req, res) => {
   }
 };
 
-const createDog = async (req, res) => {};
+const createDog = async (req, res) => {
+  const { image, name, height, weight, lifeSpan, temperaments } = req.body;
+  try {
+    const newDog = await Dog.create({
+      image,
+      name,
+      height,
+      weight,
+      lifeSpan
+    })
+
+    let tempDog = await Temperament.findAll({
+      where: {
+        name: temperaments
+      }
+    })
+
+    newDog.addTemperament(tempDog)
+
+    res.status(202).send(newDog)
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 module.exports = {
   getDogs,

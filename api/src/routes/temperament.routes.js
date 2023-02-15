@@ -1,9 +1,8 @@
-const { Router } = require('express')
+const { Router } = require("express");
+const { getTemperaments } = require("../utils/Temp");
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    res.send('Funciona la ruta de temperaments')
-});
+router.get("/", getTemperaments);
 
 module.exports = router;
