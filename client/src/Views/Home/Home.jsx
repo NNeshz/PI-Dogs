@@ -12,6 +12,17 @@ export default function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
 
+  const [orden, setOrden] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dogsPerPage, setDogsPerPage] = useState(8);
+  const indexLastDog = currentPage * dogsPerPage;
+  const indexFirstDog = indexLastDog - dogsPerPage;
+  const currentDogs = allDogs.slice(indexFirstDog, indexLastDog)
+
+  const paginado = (numeroDePagina) => {
+    setCurrentPage(numeroDePagina)
+  }
+
   useEffect(() => {
     dispatch(getDogs());
   }, [dispatch]);
@@ -19,10 +30,14 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <Paginado />
+      <Paginado 
+        dogsPerPage={dogsPerPage}
+        allDogs={allDogs.length}
+        paginado={paginado}
+      />
       <div>
-        {allDogs.length ? (
-          allDogs.map((dog) => {
+        {currentDogs.length ? (
+          currentDogs.map((dog) => {
             return (
               <Link to={"/dogs" + dog.id} key={dog.id}>
                 <Card

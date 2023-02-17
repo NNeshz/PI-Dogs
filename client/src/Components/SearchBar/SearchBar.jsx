@@ -1,6 +1,9 @@
 function SearchBar() {
     return (
-      <h1>SearchBar</h1>
+      <div>
+        <input type="text" placeholder="Busca una raza"/>
+        <button>Buscar</button>
+      </div>
     );
   }
   
