@@ -7,6 +7,7 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_WEIGHT,
   GET_DOG_BY_NAME,
+  GET_DOG_DETAIL,
 } from "./Constantes";
 
 export function getDogs() {
@@ -17,6 +18,17 @@ export function getDogs() {
       payload: json.data,
     });
   };
+}
+
+export function getDogDetail(id) {
+    return async function (dispatch) {
+        var json = await axios.get(`http://localhost:3001/dogs/${id}`);
+        console.log(json.data);
+        return dispatch({
+            type: GET_DOG_DETAIL,
+            payload: json.data
+        })
+    }
 }
 
 export function getDogByName(name) {

@@ -1,17 +1,19 @@
 import {
   GET_DOGS,
   GET_TEMPERAMENTS,
+  GET_DOG_BY_NAME,
+  GET_DOG_DETAIL,
   FILTER_BY_CREATED,
   FILTER_BY_TEMPERAMENTS,
   ORDER_BY_NAME,
   ORDER_BY_WEIGHT,
-  GET_DOG_BY_NAME,
 } from "./Constantes";
 
 const initialState = {
   dogs: [],
   dogsFilter: [],
   temperaments: [],
+  dogDetail: {}
 };
 
 function rootReducer(state = initialState, action) {
@@ -22,6 +24,12 @@ function rootReducer(state = initialState, action) {
         dogs: action.payload,
         dogsFilter: action.payload,
       };
+
+    case GET_DOG_DETAIL:
+      return {
+        ...state,
+        dogDetail: action.payload,
+      }
 
     case GET_TEMPERAMENTS:
       return {

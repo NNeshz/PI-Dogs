@@ -66,7 +66,7 @@ export default function Home() {
         {currentDogs.length ? (
           currentDogs.map((dog) => {
             return (
-              <Link to={"/dogs" + dog.id} key={dog.id}>
+              <Link to={"/dogs/" + dog.id} key={dog.id}>
                 <Card
                   name={dog.name}
                   temperament={dog.temperament}
