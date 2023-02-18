@@ -1,10 +1,14 @@
+import './Card.css'
+
 function Card({name, temperament, image, weight}) {
   return (
-    <div>
-      <img src={image} alt=""/>
+    <div className='cardContainer'>
+      <img src={image} alt="" className='dogImage'/>
       <h3>{name}</h3>
-      <p>{temperament.map((e) => e + " ")}</p>
-      <p>{weight[0]} - {weight[1]}</p>
+      <div className='cardTemperament'>{temperament.map((e) => {
+        return <div key={e} className='cardTemperamentItem'>{e}</div>
+      })}</div>
+      <p>{weight[0]} - {weight[1]} Kilos</p>
     </div>
   );
 }

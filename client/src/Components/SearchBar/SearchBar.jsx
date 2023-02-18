@@ -1,8 +1,10 @@
+import './SearchBar.css'
+
 function SearchBar() {
     return (
-      <div>
+      <div className="searchBarMainContainer">
         <input type="text" placeholder="Busca una raza"/>
-        <button>Buscar</button>
+        <button className="searchBarButton">Buscar</button>
       </div>
     );
   }

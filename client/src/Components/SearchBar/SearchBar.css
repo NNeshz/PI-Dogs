@@ -1,0 +1,15 @@
+.searchBarMainContainer {
+    display: flex;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    height: 28px;
+}
+
+.searchBarButton {
+    font-size: 18px;
+    height: 32px;
+}

@@ -1,0 +1,25 @@
+.containerPaginado {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.paginado {
+    display: flex;
+    justify-content: center;
+}
+
+.number {
+    width: 24px;
+    height: 24px;
+    color: #0e0e0e;
+    list-style: none;
+    margin: 0px 20px 20px 0px;
+    background-color: #fefefe;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+}

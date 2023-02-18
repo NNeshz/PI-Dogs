@@ -1,0 +1,35 @@
+.navbarMainContainer {
+    display: flex;
+    align-items: center;
+    padding: 60px;
+    margin: 0px 0px 80px 60x;
+    
+}
+
+.navbarButtons {
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.selectNavOptions {
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navImageLogo {
+    height: 80px;
+}
+
+.navbarImage {
+    margin-right: 250px;
+}
+
+.navCreateButton {
+    font-size: 18px;
+}
+
+select {
+    font-size: 18px;
+}

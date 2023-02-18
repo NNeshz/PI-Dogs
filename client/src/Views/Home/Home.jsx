@@ -8,6 +8,8 @@ import Card from "../../Components/Card/Card";
 import Navbar from "../../Components/Navbar/Navbar";
 import Paginado from "../../Components/Paginado/Paginado";
 
+import './Home.css'
+
 export default function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
@@ -30,12 +32,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <Paginado 
-        dogsPerPage={dogsPerPage}
-        allDogs={allDogs.length}
-        paginado={paginado}
-      />
-      <div>
+      <div className="homeContainerCards">
         {currentDogs.length ? (
           currentDogs.map((dog) => {
             return (
@@ -55,6 +52,11 @@ export default function Home() {
           </div>
         )}
       </div>
+      <Paginado 
+        dogsPerPage={dogsPerPage}
+        allDogs={allDogs.length}
+        paginado={paginado}
+      />
     </div>
   );
 }

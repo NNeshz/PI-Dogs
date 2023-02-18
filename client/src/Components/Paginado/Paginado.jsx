@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import './Paginado.css'
+
 function Paginado({ dogsPerPage, allDogs, paginado }) {
   const pageNumbers = [];
 
