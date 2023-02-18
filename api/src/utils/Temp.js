@@ -12,7 +12,7 @@ const getTemperaments = async (req, res) => {
     const cleanTemp = tempAPI.toString().split(/(?:,| )+/); // Cree un string completo y luego lo convierte a un array con split
 
     const result = cleanTemp.filter((item, index) => {
-      return cleanTemp.indexOf(item) === index
+      return cleanTemp.indexOf(item) === index // Igual era más facil poner UNIQUE en el model de TEMPERAMENTS
     }) 
 
     result.forEach((el) => {
