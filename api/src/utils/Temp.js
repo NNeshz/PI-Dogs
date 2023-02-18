@@ -11,7 +11,11 @@ const getTemperaments = async (req, res) => {
     const tempAPI = temperamentsAPI.data.map((el) => el.temperament);
     const cleanTemp = tempAPI.toString().split(/(?:,| )+/); // Cree un string completo y luego lo convierte a un array con split
 
-    cleanTemp.forEach((el) => {
+    const result = cleanTemp.filter((item, index) => {
+      return cleanTemp.indexOf(item) === index
+    }) 
+
+    result.forEach((el) => {
       Temperament.findOrCreate({
         where: { name: el },
       });
