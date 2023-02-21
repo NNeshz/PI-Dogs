@@ -1,21 +1,21 @@
-const { Dog, Temperament} = require("../db");
+const { Dog, Temperament } = require("../db");
 const { getAllDogs } = require("../utils/utils");
 
 const getDogs = async (req, res) => {
   const { name } = req.query;
   try {
-    if (!name) {
+    if (name) {
       let dogs = await getAllDogs();
-      res.status(202).send(dogs);
-    } else {
-      let dogs = await getAllDogs();
-      let dogName = dogs.filter((p) => {
-        p.name.toLowerCase().includes(name.toLowerCase());
-      });
+      let dogName = dogs.filter(
+        (dog) => dog.name.toLowerCase() === name.toLowerCase()
+      );
 
       dogName
         ? res.status(202).send(dogName)
-        : res.status(404).send({ message: "Dog not found" });
+        : res.status(404).send({ message: "No dog found" });
+    } else {
+      let dogs = await getAllDogs();
+      res.status(202).send(dogs);
     }
   } catch (error) {
     console.log(error);
@@ -49,20 +49,20 @@ const createDog = async (req, res) => {
       name,
       height,
       weight,
-      lifeSpan
-    })
+      lifeSpan,
+    });
 
     let tempDog = await Temperament.findAll({
       where: {
-        name: temperaments
-      }
-    })
+        name: temperaments,
+      },
+    });
 
-    newDog.addTemperament(tempDog)
+    newDog.addTemperament(tempDog);
 
-    res.status(202).send(newDog)
+    res.status(202).send(newDog);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 

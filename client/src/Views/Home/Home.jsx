@@ -25,33 +25,33 @@ export default function Home() {
   const [dogsPerPage, setDogsPerPage] = useState(8);
   const indexLastDog = currentPage * dogsPerPage;
   const indexFirstDog = indexLastDog - dogsPerPage;
-  const currentDogs = allDogs.slice(indexFirstDog, indexLastDog);
+  const currentDogs = allDogs?.slice(indexFirstDog, indexLastDog);
 
   const paginado = (numeroDePagina) => {
     setCurrentPage(numeroDePagina);
   };
 
   useEffect(() => {
-    dispatch(getTemeraments())
+    dispatch(getTemeraments());
     dispatch(getDogs());
   }, [dispatch]);
 
   function handleClick(e) {
-    dispatch(getDogs())
+    dispatch(getDogs());
   }
 
   function handleFilterByTemperament(e) {
-    dispatch(filterByTemperament(e.target.value))
+    dispatch(filterByTemperament(e.target.value));
   }
 
   function handleFilterByCreated(e) {
-    dispatch(filterByCreated(e.target.value))
+    dispatch(filterByCreated(e.target.value));
   }
 
   function handleSortByName(e) {
-    dispatch(orderByName(e.target.value))
-    setCurrentPage(1)
-    setOrden(`Orden ${e.target.value}`)
+    dispatch(orderByName(e.target.value));
+    setCurrentPage(1);
+    setOrden(`Orden ${e.target.value}`);
   }
 
   return (
