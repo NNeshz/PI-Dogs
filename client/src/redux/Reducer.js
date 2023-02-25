@@ -7,13 +7,14 @@ import {
   FILTER_BY_TEMPERAMENTS,
   ORDER_BY_NAME,
   ORDER_BY_WEIGHT,
+  POST_DOG,
 } from "./Constantes";
 
 const initialState = {
   dogs: [],
   dogsFilter: [],
   temperaments: [],
-  dogDetail: {}
+  dogDetail: {},
 };
 
 function rootReducer(state = initialState, action) {
@@ -29,7 +30,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         dogDetail: action.payload,
-      }
+      };
 
     case GET_TEMPERAMENTS:
       return {
@@ -41,6 +42,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         dogs: action.payload,
+      };
+
+    case POST_DOG:
+      return {
+        ...state,
       };
 
     case FILTER_BY_TEMPERAMENTS:
@@ -74,13 +80,23 @@ function rootReducer(state = initialState, action) {
       const orderDogsName =
         action.payload === "Asc"
           ? allDogsName.sort(function (a, b) {
-              if (a.name > b.name) { return 1;}
-              if (b.name > a.name) { return -1; }
-              return 0; })
+              if (a.name > b.name) {
+                return 1;
+              }
+              if (b.name > a.name) {
+                return -1;
+              }
+              return 0;
+            })
           : allDogsName.sort(function (a, b) {
-              if (a.name < b.name) { return 1; }
-              if (b.name < a.name) { return -1; }
-              return 0; });
+              if (a.name < b.name) {
+                return 1;
+              }
+              if (b.name < a.name) {
+                return -1;
+              }
+              return 0;
+            });
       return {
         ...state,
         dogs: action.payload === "All" ? allDogsName : orderDogsName,

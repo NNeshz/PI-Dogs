@@ -8,6 +8,7 @@ import {
   ORDER_BY_WEIGHT,
   GET_DOG_BY_NAME,
   GET_DOG_DETAIL,
+  POST_DOG,
 } from "./Constantes";
 
 export function getDogs() {
@@ -23,7 +24,6 @@ export function getDogs() {
 export function getDogDetail(id) {
   return async function (dispatch) {
     var json = await axios.get(`http://localhost:3001/dogs/${id}`);
-    console.log(json.data);
     return dispatch({
       type: GET_DOG_DETAIL,
       payload: json.data,
@@ -35,7 +35,6 @@ export function getDogByName(name) {
   return async function (dispatch) {
     try {
       var json = await axios.get(`http://localhost:3001/dogs?name=${name}`);
-      console.log(json.data)
       return dispatch({
         type: GET_DOG_BY_NAME,
         payload: json.data,
@@ -43,6 +42,14 @@ export function getDogByName(name) {
     } catch (error) {
       console.log(error);
     }
+  };
+}
+
+export function postDog(payload) {
+  return async function (dispatch) {
+    var json = await axios.post(`http://localhost:3001/dogs`, payload);
+    console.log(json);
+    return json;
   };
 }
 
