@@ -21,7 +21,7 @@ const Detail = () => {
             <h3>{dogDetail?.weight}</h3>
             <h3>{dogDetail?.height}</h3>
             <p>{dogDetail?.life_span}</p>
-            <p>{dogDetail?.temperament}</p>
+            <p>{dogDetail?.temperaments}</p>
             <p>ID: {dogDetail?.id}</p>
 
             <button>

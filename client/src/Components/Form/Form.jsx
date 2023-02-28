@@ -23,12 +23,13 @@ function Form() {
     });
     console.log(input);
   }
-
+  
   function handleSelect(e) {
     setInput({
       ...input,
       temperaments: [...input.temperaments, e.target.value],
     });
+    console.log(input);
   }
 
   function handleSubmit(e) {
@@ -44,7 +45,6 @@ function Form() {
       return;
     }
     dispatch(postDog(input));
-    alert("Personaje creado");
 
     setInput({
       name: "",
@@ -101,10 +101,8 @@ function Form() {
           <input
             type="text"
             placeholder="Max Height..."
-            // value={input.height[1]}
             name="height"
             onChange={(e) => handleChange(e)}
-            // onChange={(e) => handleSelectHeight(e)}
           />
         </div>
         <div>
@@ -112,10 +110,8 @@ function Form() {
           <input
             type="text"
             placeholder="Min Weight..."
-            // value={input.weight}
             name="weight"
             onChange={(e) => handleChange(e)}
-            // onChange={(e) => handleSelectWeight(e)}
           />
         </div>
         <div>
@@ -123,10 +119,8 @@ function Form() {
           <input
             type="text"
             placeholder="Max Weight..."
-            // value={input.weight}
             name="weight"
             onChange={(e) => handleChange(e)}
-            // onChange={(e) => handleSelectWeight(e)}
           />
         </div>
         <div>
@@ -134,10 +128,8 @@ function Form() {
           <input
             type="text"
             placeholder="Min Life..."
-            // value={input.lifeSpan}
             name="lifeSpan"
             onChange={(e) => handleChange(e)}
-            // onChange={(e) => handleSelectLifeSpan(e)}
           />
         </div>
         <div>
@@ -146,12 +138,10 @@ function Form() {
             type="text"
             placeholder="Max Life..."
             onChange={(e) => handleChange(e)}
-            // value={input.lifeSpan}
             name="lifeSpan"
-            // onChange={(e) => handleSelectLifeSpan(e)}
           />
         </div>
-        <select name="temperaments" onChange={(e) => handleSelect(e)}>
+        <select name="temperaments" onChange={handleSelect}>
           {temperaments.map((temp) => (
             <option value={temp.name} key={temp.name}>
               {temp.name}

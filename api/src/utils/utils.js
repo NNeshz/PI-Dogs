@@ -18,7 +18,7 @@ const getDogsAPI = async (req, res) => {
             height: dog.height.metric.split(/(?:-| )+/),
             weight: dog.weight.metric.split(/(?:-| )+/),
             lifeSpan: dog.life_span,
-            temperament: tempArr
+            temperaments: tempArr
         }
     })
     return dogsMap;
@@ -31,7 +31,11 @@ const getDogsDB = async (req, res) => {
         attributes: ['name']
      } 
     })
-    return dbDogs;
+    const dogsDB = dbDogs?.map((el) => ({
+        ...el.toJSON(),
+        temperaments: el.temperaments?.map((t) => t.name)
+    }))
+    return dogsDB;
 }
 
 const getAllDogs = async (req, res) => {

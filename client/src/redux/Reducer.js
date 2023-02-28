@@ -55,7 +55,7 @@ function rootReducer(state = initialState, action) {
         action.payload === "All"
           ? allDogs
           : allDogs.filter((dog) => {
-              return dog.temperament.find((temp) => {
+              return dog.temperaments.find((temp) => {
                 return temp === action.payload;
               });
             });

@@ -69,7 +69,7 @@ export default function Home() {
               <Link to={"/dogs/" + dog.id} key={dog.id}>
                 <Card
                   name={dog.name}
-                  temperament={dog.temperament}
+                  temperaments={dog.temperaments}
                   image={dog.image}
                   weight={dog.weight}
                 />

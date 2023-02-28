@@ -58,6 +58,9 @@ const createDog = async (req, res) => {
       },
     });
 
+    let tempArr = tempDog.map(temp => temp.name)
+    console.log(tempArr)
+
     newDog.addTemperament(tempDog);
 
     res.status(202).send(newDog);

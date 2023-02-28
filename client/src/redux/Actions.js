@@ -48,8 +48,10 @@ export function getDogByName(name) {
 export function postDog(payload) {
   return async function (dispatch) {
     var json = await axios.post(`http://localhost:3001/dogs`, payload);
-    console.log(json);
-    return json;
+    return dispatch({
+      type: POST_DOG,
+      payload: json
+    })
   };
 }
 
