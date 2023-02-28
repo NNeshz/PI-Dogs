@@ -15,9 +15,9 @@ const getDogsAPI = async (req, res) => {
             id: dog.id,
             image: dog.image.url,
             name: dog.name,
-            height: dog.height.metric.split(/(?:-| )+/),
-            weight: dog.weight.metric.split(/(?:-| )+/),
-            lifeSpan: dog.life_span,
+            height: dog.height.metric,
+            weight: dog.weight.metric,
+            lifeSpan: dog.life_span.replace(' years', ''),
             temperaments: tempArr
         }
     })

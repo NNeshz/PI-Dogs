@@ -10,9 +10,9 @@ function Form() {
   const [input, setInput] = useState({
     image: "",
     name: "",
-    height: [],
-    weight: [],
-    lifeSpan: [],
+    height: "",
+    weight: "",
+    lifeSpan: "",
     temperaments: [],
   });
 
@@ -49,9 +49,9 @@ function Form() {
     setInput({
       name: "",
       image: "",
-      height: [],
-      weight: [],
-      lifeSpan: [],
+      height: "",
+      weight: "",
+      lifeSpan: "",
       temperaments: [],
     });
   }
@@ -88,7 +88,7 @@ function Form() {
           />
         </div>
         <div>
-          <label>Min Height:</label>
+          <label>Min & Max Height:</label>
           <input
             type="text"
             placeholder="Min Height..."
@@ -97,16 +97,7 @@ function Form() {
           />
         </div>
         <div>
-          <label>Max Height:</label>
-          <input
-            type="text"
-            placeholder="Max Height..."
-            name="height"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Min Weight:</label>
+          <label>Min & Max Weight:</label>
           <input
             type="text"
             placeholder="Min Weight..."
@@ -115,30 +106,12 @@ function Form() {
           />
         </div>
         <div>
-          <label>Max Weight:</label>
-          <input
-            type="text"
-            placeholder="Max Weight..."
-            name="weight"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Min Life:</label>
+          <label>Min & Max Life:</label>
           <input
             type="text"
             placeholder="Min Life..."
             name="lifeSpan"
             onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Max Life:</label>
-          <input
-            type="text"
-            placeholder="Max Life..."
-            onChange={(e) => handleChange(e)}
-            name="lifeSpan"
           />
         </div>
         <select name="temperaments" onChange={handleSelect}>
@@ -149,7 +122,11 @@ function Form() {
           ))}
         </select>
         <ul>
-          <li>{input.temperaments.map((el) => el + " - ")}</li>
+          { 
+            input.temperaments?.map((e) => (
+              <div key={e}>{e}</div>
+            ))
+          }
         </ul>
         <button type="submit">Crear Perro</button>
       </form>

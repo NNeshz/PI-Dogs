@@ -11,7 +11,7 @@ const Detail = () => {
     
     useEffect(() =>{
         dispatch(getDogDetail(id))
-    })
+    }, [dispatch])
     
     return(
         <div>
@@ -20,7 +20,7 @@ const Detail = () => {
             <h2>{dogDetail.name}</h2>
             <h3>{dogDetail?.weight}</h3>
             <h3>{dogDetail?.height}</h3>
-            <p>{dogDetail?.life_span}</p>
+            <p>{dogDetail?.lifeSpan}</p>
             <p>{dogDetail?.temperaments}</p>
             <p>ID: {dogDetail?.id}</p>
 

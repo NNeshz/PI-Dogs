@@ -45,7 +45,7 @@ const createDog = async (req, res) => {
   const { image, name, height, weight, lifeSpan, temperaments } = req.body;
   try {
     const newDog = await Dog.create({
-      image,
+      image: image || 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png',
       name,
       height,
       weight,
