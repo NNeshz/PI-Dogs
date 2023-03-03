@@ -1,15 +1,25 @@
-.searchBarMainContainer {
+.searchBarContainer {
     display: flex;
-    font-size: 18px;
     align-items: center;
-    justify-content: center;
 }
 
-input {
-    height: 28px;
+.searchBarInput {
+    height: 20px;
+    width: 150px;
+    border: none;
+    background-color: #eeeeee;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-size: 18px;
 }
 
 .searchBarButton {
+    height: 28px;
+    border: none;
+    background-color: #4db652;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #ffffff;
     font-size: 18px;
-    height: 32px;
 }

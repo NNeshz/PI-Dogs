@@ -4,7 +4,7 @@ function Card({ name, temperaments, image, weight }) {
   return (
     <div className="cardContainer">
       <img src={image} alt="" className="dogImage" />
-      <h3>{name}</h3>
+      <h3 className="cardName">{name}</h3>
       <div className="cardTemperament">
         {temperaments?.map((temp) => {
           return (
@@ -14,15 +14,12 @@ function Card({ name, temperaments, image, weight }) {
           );
         })}
       </div>
-      <p>
-        {weight} Kilos
-      </p>
+      <p>{weight} Kilos</p>
     </div>
   );
 }
 
 export default Card;
-
 
 // {temperaments?.map((temp) => {
 //   return (

@@ -1,0 +1,29 @@
+.detailsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.detailsHeader {
+    display: flex;
+    width: 1500px;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.detailsMainContainer {
+    display: flex;
+}
+.detailsDogName {
+    width: 700px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px 0px 260px;
+}
+
+.detailsImage {
+    width: 700px;
+    height: 350px;
+}

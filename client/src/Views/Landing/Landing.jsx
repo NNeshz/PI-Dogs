@@ -21,10 +21,11 @@ function Landing() {
           con las caracteristicas de cada raza de perro para
           <br />
           que tengas a tu mejor amigo cerca de ti
+          <br />
+          <b>¿Estás listo?</b>
         </p>
         <div className="landingLaunchButton">
-          <p>¿Estás listo?</p>
-          <Link to="/dogs">Iniciar</Link>
+          <Link to="/dogs" className="landingIniciarButton">Iniciar</Link>
         </div>
       </div>
     </div>

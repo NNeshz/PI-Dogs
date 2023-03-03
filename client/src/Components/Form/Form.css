@@ -1,0 +1,28 @@
+.formMainContainer {
+    margin-left: 650px;
+}
+
+.formTitle {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.formContainer {
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.formInputs {
+    display: flex;
+}
+
+.formLabelGeneral {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.formDivGeneral {
+    margin: 20px 0px;
+    display: block;
+}

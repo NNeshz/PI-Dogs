@@ -10,6 +10,7 @@ function Navbar({
   handleFilterByTemperament,
   handleFilterByCreated,
   handleSortByName,
+  handleSortByWeight
 }) {
   const allTemperaments = useSelector((state) => state.temperaments);
 
@@ -22,9 +23,9 @@ function Navbar({
       </div>
       <div className="navbarButtons">
         <div className="selectNavOptions">
-          <button onClick={(e) => handleClick(e)}>🔄</button> {/* RECARGAR LA PAGINA */}
+          <button onClick={(e) => handleClick(e)} className="navbarButtonParent">Reload</button> {/* RECARGAR LA PAGINA */}
 
-          <select onChange={(e) => handleFilterByTemperament(e)}> {/* FILTRO DE TEMPERAMENTOS */}
+          <select onChange={(e) => handleFilterByTemperament(e)} className="navbarSelectParent"> {/* FILTRO DE TEMPERAMENTOS */}
             <option value="All">All</option>
             {allTemperaments.map((temp) => (
               <option key={temp.name} value={temp.name}>
@@ -33,16 +34,22 @@ function Navbar({
             ))}
           </select>
 
-          <select onChange={(e) => handleFilterByCreated(e)}> {/* FILTRO DE DB Y API */}
+          <select onChange={(e) => handleFilterByCreated(e)} className="navbarSelectParent"> {/* FILTRO DE DB Y API */}
             <option value="All">All</option>
             <option value="Created">Created</option>
             <option value="API">API</option>
           </select>
 
-          <select onChange={(e) => handleSortByName(e)}> {/* ORDEN ALFABETICO */}
+          <select onChange={(e) => handleSortByName(e)} className="navbarSelectParent"> {/* ORDEN ALFABETICO */}
             <option value="All">All</option>
             <option value="Asc">A - Z</option>
             <option value="Desc">Z - A</option>
+          </select>
+
+          <select onChange={(e) => handleSortByWeight(e)} className="navbarSelectParent"> {/* ORDEN DE PESO*/}
+            <option value="All">All</option>
+            <option value="Asc">Light</option>
+            <option value="Desc">Heavy</option>
           </select>
         </div>
 

@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { postDog, getTemeraments } from "../../redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
+import validate from "./Validate"
+
+import "./Form.css"
 
 function Form() {
   const dispatch = useDispatch();
   const temperaments = useSelector((state) => state.temperaments);
+  const [errors, setErrors] = useState({})
 
   const [input, setInput] = useState({
     image: "",
@@ -21,7 +25,11 @@ function Form() {
       ...input,
       [e.target.name]: e.target.value,
     });
-    console.log(input);
+    setErrors(validate({
+      ...input,
+      [e.target.name]: e.target.value
+    }))
+    // console.log(input); PARA DEBUGGERAR
   }
   
   function handleSelect(e) {
@@ -29,7 +37,7 @@ function Form() {
       ...input,
       temperaments: [...input.temperaments, e.target.value],
     });
-    console.log(input);
+    // console.log(input); PARA DEBUGGERAR
   }
 
   function handleSubmit(e) {
@@ -42,9 +50,11 @@ function Form() {
       input.temperaments.length === 0
     ) {
       alert("Por favor complete todos los campos");
+      e.preventDefaul()
       return;
     }
     dispatch(postDog(input));
+    alert("Perro creado")
 
     setInput({
       name: "",
@@ -61,14 +71,16 @@ function Form() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="formMainContainer">
       <Link to="/dogs">
         <button>Regresar</button>
       </Link>
-      <h1>Crea un nuevo mejor amigo</h1>
+      <div className="formContainer">
+      <div className="formTitle">Crea un nuevo mejor amigo</div>
+      <div className="formInputs">
       <form action="" onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>Nombre</label>
+        <div className="formDivGeneral">
+          <label className="formLabelGeneral">Nombre</label>
           <input
             type="text"
             placeholder="Nombre..."
@@ -76,43 +88,48 @@ function Form() {
             name="name"
             onChange={(e) => handleChange(e)}
           />
+          {errors.name && <p>{errors.name}</p>}
         </div>
         <div>
-          <label>Imagen</label>
+          <label className="formLabelGeneral">Imagen</label>
           <input
             type="text"
             placeholder="Image..."
             value={input.image}
             name="image"
             onChange={(e) => handleChange(e)}
-          />
+            />
+            {errors.image && <p>{errors.image}</p>}
         </div>
-        <div>
-          <label>Min & Max Height:</label>
+        <div className="formDivGeneral">
+          <label className="formLabelGeneral">Min & Max Height:</label>
           <input
             type="text"
             placeholder="Min Height..."
             name="height"
             onChange={(e) => handleChange(e)}
-          />
+            />
+            {errors.height && <p>{errors.height}</p>}
         </div>
-        <div>
-          <label>Min & Max Weight:</label>
+        <div className="formDivGeneral">
+          <label className="formLabelGeneral">Min & Max Weight:</label>
           <input
             type="text"
             placeholder="Min Weight..."
             name="weight"
             onChange={(e) => handleChange(e)}
-          />
+            />
+            {errors.weight && <p>{errors.weight}</p>}
         </div>
-        <div>
-          <label>Min & Max Life:</label>
+        <div className="formDivGeneral">
+          <label className="formLabelGeneral">Min & Max Life:</label>
           <input
             type="text"
             placeholder="Min Life..."
             name="lifeSpan"
             onChange={(e) => handleChange(e)}
-          />
+            />
+            {errors.lifeSpan && <p>{errors.lifeSpan}</p>}
         </div>
         <select name="temperaments" onChange={handleSelect}>
           {temperaments.map((temp) => (
@@ -130,6 +147,8 @@ function Form() {
         </ul>
         <button type="submit">Crear Perro</button>
       </form>
+      </div>
+      </div>
     </div>
   );
 }

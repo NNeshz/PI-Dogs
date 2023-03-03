@@ -8,6 +8,7 @@ import {
   filterByCreated,
   filterByTemperament,
   orderByName,
+  orderByWeight
 } from "../../redux/Actions";
 
 import Card from "../../Components/Card/Card";
@@ -54,6 +55,12 @@ export default function Home() {
     setOrden(`Orden ${e.target.value}`);
   }
 
+  function handleSortByWeight(e) {
+    dispatch(orderByWeight(e.target.value));
+    setCurrentPage(1);
+    setOrden(`Orden ${e.target.value}`);
+  }
+
   return (
     <div>
       <Navbar
@@ -61,6 +68,7 @@ export default function Home() {
         handleFilterByTemperament={handleFilterByTemperament}
         handleFilterByCreated={handleFilterByCreated}
         handleSortByName={handleSortByName}
+        handleSortByWeight={handleSortByWeight}
       />
       <div className="homeContainerCards">
         {currentDogs.length ? (
