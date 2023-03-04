@@ -1,6 +1,12 @@
 import "./Card.css";
 
-function Card({ name, temperaments, image, weight }) {
+import { useDispatch } from "react-redux"
+
+import { deleteDog } from "../../redux/Action"
+
+function Card({ id, name, temperaments, image, weight }) {
+  const dispatch = useDispatch();
+  
   return (
     <div className="cardContainer">
       <img src={image} alt="" className="dogImage" />
@@ -15,6 +21,7 @@ function Card({ name, temperaments, image, weight }) {
         })}
       </div>
       <p>{weight} Kilos</p>
+      <button onClick={deleteDog(id)}>X</button>
     </div>
   );
 }

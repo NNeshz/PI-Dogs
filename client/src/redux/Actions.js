@@ -45,6 +45,15 @@ export function getDogByName(name) {
   };
 }
 
+export function deleteDog(id) {
+  return async function(dispatch) {
+    var json = await axios.delete(`http://localhost:3001/dogs/${id}`);
+    return dispatch({
+      type: "DELETE_DOG",
+    })
+  }
+}
+
 export function postDog(payload) {
   return async function (dispatch) {
     var json = await axios.post(`http://localhost:3001/dogs`, payload);

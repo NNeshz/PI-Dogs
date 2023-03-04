@@ -5,7 +5,11 @@ const {
   createDog,
 } = require("../controllers/Dogs.controllers");
 
+const { deleteDog } = require('../utils/utils')
+
 const router = Router();
+
+router.delete('/:id', deleteDog)
 
 router.get("/", getDogs);
 

@@ -48,4 +48,17 @@ const getAllDogs = async (req, res) => {
     }
 }
 
-module.exports = { getAllDogs };
+const deleteDog = async(req, res) => {
+    const { id } = req.query
+    try {
+        const dogDeleted = await Dogs.destroy({
+            where: {
+                id
+            }
+        })
+    } catch {
+        console.log(error)
+    }
+}
+
+module.exports = { getAllDogs, deleteDog };
